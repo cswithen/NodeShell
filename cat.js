@@ -1,10 +1,11 @@
 const fs = require('fs');
 
-module.exports = (fileName) => {
+module.exports = (fileName, done) => {
   fs.readFile(`./${fileName}`, 'utf8', (err, data) => {
-    if (err) throw err;
-    process.stdout.write('\n')
-            process.stdout.write(data)
-            process.stdout.write('\nprompt > ')
-  })
+    if(err){
+      done("Something went wrong..")
+  } else {
+      done(data);
+  }
+})
 }
